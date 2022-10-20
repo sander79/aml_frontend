@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>AML spring boot application</title>
+
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/5.0.0/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+
+<main role="main" class="container">
+
+    <div class="starter-template">
+        <h1><span th:text="${@environment.getProperty('riskProfile.title')}"></span></h1>
+    </div>
+    
+    
+<h2><span th:text="${@environment.getProperty('riskProfile.surveySearch')}"></span></h2>
+<form method="POST" action="/aml/riskProfile/searchRiskProfile">
+    <label for="id">id:</label><br>
+    <input type="text" id="id" name="id"><br>
+    
+    <label for="subjectCode">SubjectCode:</label><br>
+    <input type="text" id="subjectCode" name="subjectCode"><br><br>
+    
+    <label for="surveyDateTo">surveyDateTo:</label><br>
+    <input type="date" id="surveyDateTo" name="surveyDateTo" min="2015-01-01">
+
+    <label for="surveyDateFrom">surveyDateFrom:</label><br>
+    <input type="date" id="surveyDateFrom" name="surveyDateFrom" min="2015-01-01">
+    
+    <input type="submit" value="Submit">
+</form>
+    
+<h3><span th:text="${@environment.getProperty('riskProfile.surveylist')}"></span></h3>
+<table class="amltable">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>abi</th>
+        <th>serviceCode</th>
+        <th>date</th>
+        <th>subjectCode</th>
+        <th>value</th>
+        <th>risk band</th>
+    </tr>
+    </thead>
+    <tbody>    
+    <tr th:each="profile : ${riskProfileList}">
+        <td th:text="${profile.id}"></td>
+        <td th:text="${profile.abi}"></td>
+        <td th:text="${profile.serviceCode}"></td>
+        <td th:text="${profile.date}"></td>      
+        <td th:text="${profile.subjectCode}"></td>
+        <td th:text="${profile.value}"></td>
+        <td th:text="${profile.riskBand}"></td>
+	</tr>
+	<tbody>
+</table>
+
+</main>
+<!-- /.container -->
+
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

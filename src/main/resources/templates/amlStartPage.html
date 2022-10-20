@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>AML spring boot application</title>
+
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/5.0.0/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+
+<main role="main" class="container">
+
+    <div class="starter-template">
+        <h1><span th:text="${@environment.getProperty('start.title')}"></span></h1>
+        <h2><span th:text="${@environment.getProperty('start.subtitle')}" ></span></h2>
+    </div>
+    
+   <a class="btn" href="aml/kyc"><span th:text="${@environment.getProperty('start.goKyc')}"></span></a>
+   <a class="btn" href="/aml/riskProfile"><span th:text="${@environment.getProperty('start.goRpm')}"></span></a>
+   <a class="btn" href="/aml/unexpected"><span th:text="${@environment.getProperty('start.goUne')}"></span></a>
+
+</main>
+<!-- /.container -->
+
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

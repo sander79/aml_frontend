@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>AML spring boot application</title>
+
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/5.0.0/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+
+<main role="main" class="container">
+
+    <div class="starter-template">
+        <h1><span th:text="${@environment.getProperty('kyc.title')}"></span></h1>
+    </div>
+    
+    
+<h2><span th:text="${@environment.getProperty('kyc.surveySearch')}"></span></h2>
+<form action="/example-handler" method="post">
+    <label for="personName">Name:</label><br>
+    <input type="text" id="personName" name="personName"><br>
+    <label for="personAddress">Address:</label><br>
+    <input type="text" id="personAddress" name="personAddress"><br><br>
+    <input type="submit" value="Submit">
+</form>
+    
+<h3><span th:text="${@environment.getProperty('kyc.surveylist')}"></span></h3>
+<table class="amltable">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>abi</th>
+        <th>serviceCode</th>
+        <th>creation date</th>
+        <th>status</th>
+        <th>subjectCode</th>
+        <th>subjectType</th>
+    </tr>
+    </thead>
+    <tbody>    
+    <tr th:each="survey : ${surveyList}">
+        <td th:text="${survey.id}"></td>
+        <td th:text="${survey.abi}"></td>
+        <td th:text="${survey.serviceCode}"></td>
+        <td th:text="${survey.creationDate}"></td>      
+        <td th:text="${survey.status}"></td>
+        <td th:text="${survey.subjectCode}"></td>
+        <td th:text="${survey.subjectType}"></td>        
+	</tr>
+	<tbody>
+</table>
+
+</main>
+<!-- /.container -->
+
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</body>
+</html>
