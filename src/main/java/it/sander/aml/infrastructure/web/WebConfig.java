@@ -25,7 +25,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addViewControllers(final ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
     }
-    
+    /*    
     @Bean
     public ViewResolver thymeleafViewResolver() {
         final ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
@@ -38,7 +38,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Description("Thymeleaf template resolver serving HTML 5")
     public ITemplateResolver templateResolver() {
         final SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-        templateResolver.setPrefix("/WEB-INF/templates/");
+        //templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML");
         return templateResolver;
@@ -51,7 +51,7 @@ public class WebConfig implements WebMvcConfigurer {
         templateEngine.setTemplateResolver(templateResolver());
         return templateEngine;
     }
-
+*/
     @Bean
     @Description("Spring message resolver")
     public MessageSource messageSource() {
