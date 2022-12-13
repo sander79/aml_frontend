@@ -1,4 +1,4 @@
-package it.sander.aml.application.autentication;
+package it.sander.aml.application.security.saml;
 
 import java.io.IOException;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package it.sander.aml.application.config;
+package it.sander.aml.application.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import it.sander.aml.application.autentication.MySimpleUrlAuthenticationSuccessHandler;
+import it.sander.aml.application.security.saml.MySimpleUrlAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity

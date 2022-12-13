@@ -1,57 +1,9 @@
-package it.sander.aml.application.config;
+package it.sander.aml.application.security.saml;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-
-import org.opensaml.saml2.metadata.provider.MetadataProvider;
-import org.opensaml.saml2.metadata.provider.MetadataProviderException;
-import org.opensaml.saml2.metadata.provider.ResourceBackedMetadataProvider;
-import org.opensaml.util.resource.ClasspathResource;
-import org.opensaml.util.resource.ResourceException;
-import org.opensaml.xml.parse.StaticBasicParserPool;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.core.io.DefaultResourceLoader;
-import org.springframework.core.io.Resource;
-import org.springframework.security.saml.SAMLAuthenticationProvider;
-import org.springframework.security.saml.SAMLBootstrap;
-import org.springframework.security.saml.SAMLEntryPoint;
-import org.springframework.security.saml.SAMLLogoutFilter;
-import org.springframework.security.saml.SAMLLogoutProcessingFilter;
-import org.springframework.security.saml.context.SAMLContextProviderImpl;
-import org.springframework.security.saml.key.JKSKeyManager;
-import org.springframework.security.saml.key.KeyManager;
-import org.springframework.security.saml.log.SAMLDefaultLogger;
-import org.springframework.security.saml.metadata.CachingMetadataManager;
-import org.springframework.security.saml.metadata.ExtendedMetadata;
-import org.springframework.security.saml.metadata.ExtendedMetadataDelegate;
-import org.springframework.security.saml.processor.HTTPPostBinding;
-import org.springframework.security.saml.processor.HTTPRedirectDeflateBinding;
-import org.springframework.security.saml.processor.SAMLBinding;
-import org.springframework.security.saml.processor.SAMLProcessorImpl;
-import org.springframework.security.saml.util.VelocityFactory;
-import org.springframework.security.saml.websso.SingleLogoutProfile;
-import org.springframework.security.saml.websso.SingleLogoutProfileImpl;
-import org.springframework.security.saml.websso.WebSSOProfile;
-import org.springframework.security.saml.websso.WebSSOProfileConsumer;
-import org.springframework.security.saml.websso.WebSSOProfileConsumerHoKImpl;
-import org.springframework.security.saml.websso.WebSSOProfileConsumerImpl;
-import org.springframework.security.saml.websso.WebSSOProfileECPImpl;
-import org.springframework.security.saml.websso.WebSSOProfileImpl;
-import org.springframework.security.saml.websso.WebSSOProfileOptions;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
-import org.springframework.security.web.authentication.logout.LogoutHandler;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
-
-import it.sander.aml.application.autentication.CustomSAMLAuthenticationProvider;
 
 @Configuration
 @Profile("saml")
@@ -69,6 +21,7 @@ public class SamlSecurityConfig {
     @Value("${saml.idp}")
     private String defaultIdp;
 
+    /*
     @Bean(initMethod = "initialize")
     public StaticBasicParserPool parserPool() {
         return new StaticBasicParserPool();
@@ -196,8 +149,7 @@ public class SamlSecurityConfig {
         successRedirectHandler.setDefaultTargetUrl("/");
         return successRedirectHandler;
     }
-
-    @Bean
+/*    @Bean
     @Qualifier("saml")
     public SimpleUrlAuthenticationFailureHandler authenticationFailureHandler() {
         SimpleUrlAuthenticationFailureHandler failureHandler = new SimpleUrlAuthenticationFailureHandler();
@@ -250,4 +202,5 @@ public class SamlSecurityConfig {
         bindings.add(httpPostBinding());
         return new SAMLProcessorImpl(bindings);
     }
+*/    
 }

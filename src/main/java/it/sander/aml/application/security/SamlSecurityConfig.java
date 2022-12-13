@@ -1,40 +1,15 @@
-package it.sander.aml.application.config;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+package it.sander.aml.application.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.saml.SAMLAuthenticationProvider;
-import org.springframework.security.saml.SAMLDiscovery;
-import org.springframework.security.saml.SAMLEntryPoint;
-import org.springframework.security.saml.SAMLLogoutFilter;
-import org.springframework.security.saml.SAMLLogoutProcessingFilter;
-import org.springframework.security.saml.SAMLProcessingFilter;
-import org.springframework.security.saml.key.KeyManager;
-import org.springframework.security.saml.metadata.ExtendedMetadata;
-import org.springframework.security.saml.metadata.MetadataGenerator;
-import org.springframework.security.saml.metadata.MetadataGeneratorFilter;
-import org.springframework.security.web.DefaultSecurityFilterChain;
-import org.springframework.security.web.FilterChainProxy;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import org.springframework.security.web.csrf.CsrfFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -43,7 +18,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 		// jsr250Enabled = true,
 		prePostEnabled = true)
 @Profile("saml")
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class SamlSecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Value("${saml.sp}")
     private String samlAudience;
@@ -55,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     @Qualifier("saml")
     private SimpleUrlAuthenticationFailureHandler samlAuthFailureHandler;
-
+/*
     @Autowired
     private SAMLEntryPoint samlEntryPoint;
 
@@ -160,5 +135,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(samlAuthenticationProvider);
     }
-
+*/
 }
